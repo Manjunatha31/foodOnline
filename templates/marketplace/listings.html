@@ -47,6 +47,10 @@
                                             {% if vendor.user_profile.address %}
                                             <span><small class="text-muted">{{ vendor.user_profile.address }}</small></span>
                                             {% endif %}
+                                            <br>
+                                            {% if source_location %}
+                                            <span><small><strong>{{vendor.kms}} Km</strong> away from {{source_location}}</small></span>
+                                            {% endif %}
                                         </div>
                                         <div class="list-option">
 
