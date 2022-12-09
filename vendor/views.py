@@ -110,7 +110,8 @@ def edit_category(request, pk=None):
             category_name = form.cleaned_data['category_name']
             category = form.save(commit=False)
             category.vendor = get_vendor(request)
-            category.slug = slugify(category_name)
+            form.save()
+            category.slug = slugify(category_name)+'-'+str(category.id) 
             form.save()
             messages.success(request, 'Category updated successfully!')
             return redirect('menu_builder')
@@ -144,7 +145,8 @@ def add_food(request):
             foodtitle = form.cleaned_data['food_title']
             food = form.save(commit=False)
             food.vendor = get_vendor(request)
-            food.slug = slugify(foodtitle)
+            form.save()
+            food.slug = slugify(foodtitle)+'-'+str(food.id)
             form.save()
             messages.success(request, 'Food Item added successfully!')
             return redirect('fooditems_by_category', food.category.id)
@@ -171,7 +173,8 @@ def edit_food(request, pk=None):
             foodtitle = form.cleaned_data['food_title']
             food = form.save(commit=False)
             food.vendor = get_vendor(request)
-            food.slug = slugify(foodtitle)
+            form.save()
+            food.slug = slugify(foodtitle)+'-'+str(food.id)
             form.save()
             messages.success(request, 'Food Item updated successfully!')
             return redirect('fooditems_by_category', food.category.id)
