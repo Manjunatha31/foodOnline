@@ -14,25 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
-from . import  views
+from django.urls import path, include
+from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from marketplace import views as MarketplaceViews
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('',include('accounts.urls')),
-    path('marketplace/',include('marketplace.urls')),
-    #cart
-    path('cart/', MarketplaceViews.cart, name='cart'),
-    
-    #Search
-    path('search/', MarketplaceViews.search, name='search'),
-    
-    #Checkout
+    path("admin/", admin.site.urls),
+    path("", views.home, name="home"),
+    path("", include("accounts.urls")),
+    path("marketplace/", include("marketplace.urls")),
+    # cart
+    path("cart/", MarketplaceViews.cart, name="cart"),
+    # Search
+    path("search/", MarketplaceViews.search, name="search"),
+    # Checkout
     #path('checkout/', MarketplaceViews.checkout, name='checkout'),
-    
-    
-] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
